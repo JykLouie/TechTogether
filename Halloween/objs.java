@@ -10,6 +10,7 @@ public class objs {
     String fileName;
     double t;
     double r;
+    double theta;
     double Constant = 50;
     Random ran = new Random();
 
@@ -78,11 +79,11 @@ public class objs {
                 this.Constant = -Constant;
                 this.t = -t;
             }
-            boolean reachTheEnd = false;
             
-            this.xpos = this.xpos + r * Math.cos(xvel) * t;
-            this.ypos = this.ypos + r * yvel * Math.cos(yvel) * t;
+            this.xpos = this.xpos + Math.cos(this.theta) * 10000;
+            this.ypos = this.ypos + Math.sin(this.theta) * 10000;
             this.t = this.t + 1;
+            this.theta = this.theta + 0.1;
         }
 
     public boolean hitTheWall(){
@@ -101,6 +102,7 @@ public class objs {
         this.t = 0;
         this.Constant = Constant;
         this.r = 3.14;
+        this.theta = 0;
     }
 
     public static void main(String args[]){

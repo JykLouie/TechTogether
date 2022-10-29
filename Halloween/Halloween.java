@@ -63,11 +63,11 @@ public class Halloween {
             StdDraw.clear();
             StdDraw.picture(256000,256000,"background.png");
             for(int i = 0; i < numofobjs; i++){
-                objsList[i].update2();
+                objsList[i].update3();
                 StdDraw.picture(objsList[i].xpos, objsList[i].ypos, objsList[i].fileName);
             }
             StdDraw.show();
-            StdDraw.pause(100);
+            StdDraw.pause(10);
         }
     }
 }
