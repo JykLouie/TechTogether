@@ -12,6 +12,8 @@ public class objs {
     double r;
     double theta;
     double Constant = 50;
+    double radUpdate3;
+
     Random ran = new Random();
 
     public String ranFilename(){
@@ -40,7 +42,15 @@ public class objs {
             return -speed;
         }
         return speed;
-    }    
+    }
+    
+    public double randomRadGen(){
+        int rad = ran.nextInt(20000);
+        while(rad < 10000){
+            rad = ran.nextInt(20000);
+        }
+        return rad;
+    }
     
     public void update(){
         if(this.hitTheWall()){
@@ -64,6 +74,10 @@ public class objs {
             this.Constant = -Constant;
             this.t = -t;
         }
+        if(this.xpos < 0 && this.ypos < 0 || this.xpos > 512000 && this.ypos > 512000){
+            this.xpos = 206000;
+            this.ypos = 206000;
+        }
     
             this.xpos = this.xpos + this.xvel;
             this.ypos = this.ypos - Constant * Math.pow(t, 2);
@@ -80,8 +94,8 @@ public class objs {
                 this.t = -t;
             }
             
-            this.xpos = this.xpos + Math.cos(this.theta) * 10000;
-            this.ypos = this.ypos + Math.sin(this.theta) * 10000;
+            this.xpos = this.xpos + Math.cos(this.theta) * this.radUpdate3;
+            this.ypos = this.ypos + Math.sin(this.theta) * this.radUpdate3;
             this.t = this.t + 1;
             this.theta = this.theta + 0.1;
         }
@@ -103,6 +117,7 @@ public class objs {
         this.Constant = Constant;
         this.r = 3.14;
         this.theta = 0;
+        this.radUpdate3 = randomRadGen();
     }
 
     public static void main(String args[]){

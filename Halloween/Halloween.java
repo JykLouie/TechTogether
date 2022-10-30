@@ -38,7 +38,7 @@ public class Halloween {
         String number = "";
         while(!entered){
             StdDraw.clear(Color.black);
-            StdDraw.text(512000/2,512000/2,"Please enter the number of ghost you want in the court(An integer!)");
+            StdDraw.text(512000/2,512000/2,"Enter the number of mooooonster you want to see(An integer!)");
             StdDraw.show();
             StdDraw.pause(3000);
             number = world.solicitNCharsInput(1);
@@ -63,9 +63,20 @@ public class Halloween {
             StdDraw.clear();
             StdDraw.picture(256000,256000,"background.png");
             for(int i = 0; i < numofobjs; i++){
-                objsList[i].update3();
-                StdDraw.picture(objsList[i].xpos, objsList[i].ypos, objsList[i].fileName);
-            }
+                    if(objsList[i].fileName.equals("obj1.png")){
+                        objsList[i].update();
+                        StdDraw.picture(objsList[i].xpos, objsList[i].ypos, objsList[i].fileName);
+                    }
+                    if(objsList[i].fileName.equals("obj0.png")){
+                        objsList[i].update2();
+                        StdDraw.picture(objsList[i].xpos, objsList[i].ypos, objsList[i].fileName);
+                    }       
+                    if(objsList[i].fileName.equals("obj2.png")){
+                        objsList[i].update3();
+                        StdDraw.picture(objsList[i].xpos, objsList[i].ypos, objsList[i].fileName);
+                    }
+                }
+            
             StdDraw.show();
             StdDraw.pause(10);
         }
